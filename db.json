@@ -16,7 +16,7 @@
       "id": 3,
       "text": "Job Interview",
       "date": "February 2nd at 5:30pm",
-      "reminder": false
+      "reminder": true
     },
     {
       "text": "Task From Home",
