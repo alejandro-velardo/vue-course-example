@@ -1,22 +1,28 @@
 {
-    "tasks": [
+  "tasks": [
     {
-        "id": 1,
-        "text": "Grocery Shopping",
-        "date": "January 31st at 2:30pm",
-        "reminder": true
+      "id": 1,
+      "text": "Grocery Shopping",
+      "date": "January 31st at 2:30pm",
+      "reminder": true
     },
     {
-        "id": 2,
-        "text": "GYM session",
-        "date": "February 1st at 6:30pm",
-        "reminder": false
+      "id": 2,
+      "text": "GYM session",
+      "date": "February 1st at 6:30pm",
+      "reminder": false
     },
     {
-        "id": 3,
-        "text": "Job Interview",
-        "date": "February 2nd at 5:30pm",
-        "reminder": true
+      "id": 3,
+      "text": "Job Interview",
+      "date": "February 2nd at 5:30pm",
+      "reminder": false
+    },
+    {
+      "text": "Task From Home",
+      "date": "06/02",
+      "reminder": true,
+      "id": 4
     }
-    ]
+  ]
 }
