@@ -1,43 +1,75 @@
 <template>
   <div class="container">
-    <Header title="Task Tracker"/>
+    <Header @toggle-add-task="toggleAddTask" 
+    title="Task Tracker"
+    :showAddTask="showAddTask"/>
+    <div v-show="showAddTask">
+      <AddTask @add-task="addTask"/>
+    </div>
+    <Tasks @toggle-reminder="toggleReminder" @delete-task="deleteTask" :tasks="tasks"/>
    
   </div>
 </template>
 
 <script>
 import Header from './components/Header'
+import Tasks from './components/Tasks'
+import AddTask from './components/AddTask'
+
 export default {
   name: 'App',
   components: {
     Header,
+    Tasks,
+    AddTask
   },
   data() {
     return {
-      task: []
+      tasks: [],
+      showAddTask: false
+    }
+  },
+  methods: {
+    toggleAddTask() {
+      this.showAddTask = !this.showAddTask
+    },
+    addTask (task) {
+      this.tasks  = [...this.tasks, task]
+    },
+    deleteTask(id) {
+      if(confirm('Are you sure?')) {
+        this.tasks = this.tasks.filter((task) => 
+        task.id !== id)
+      }
+    },
+    toggleReminder(id) {
+      this.tasks = this.tasks.map((task) => 
+        task.id === id ? { ...task, reminder: !task.
+        reminder } : task
+      )
     }
   },
   created() {
-    this.tasks = [//Tipically an HTTP request
-    {
-      id: 1,
-      text: "Grocery Shopping",
-      date: "January 31st at 2:30pm",
-      reminder: true,
-    },
-    {
-      id: 2,
-      text: "GYM session",
-      date: "February 1st at 6:30pm",
-      reminder: true,
-    },
-    {
-      id: 3,
-      text: "Job Interview",
-      date: "February 2nd at 5:30pm",
-      reminder: true,
-    },
-  ]
+    this.tasks = [                //Tipically an HTTP request
+      {
+        id: 1,
+        text: "Grocery Shopping",
+        date: "January 31st at 2:30pm",
+        reminder: true,
+      },
+      {
+        id: 2,
+        text: "GYM session",
+        date: "February 1st at 6:30pm",
+        reminder: false,
+      },
+      {
+        id: 3,
+        text: "Job Interview",
+        date: "February 2nd at 5:30pm",
+        reminder: true,
+      },
+    ]
   }
 }
 </script>
